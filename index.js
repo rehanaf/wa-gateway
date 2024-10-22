@@ -45,6 +45,7 @@ whatsapp.onMessageReceived(async (msg) => {
   }
 })
 
+// SEND MESSAGE
 app.post('/send-message', async (req, res) => {
   const { sessionId, type, to, text, media, filename } = req.body
 
@@ -138,6 +139,7 @@ app.post('/send-message', async (req, res) => {
   }
 })
 
+// START SESSION
 app.get('/start/:id', async (req, res) => {
   const { id } = req.params
   const session = await whatsapp.getSession(id)
@@ -157,6 +159,7 @@ app.get('/start/:id', async (req, res) => {
   }
 })
 
+// DELETE SESSION
 app.get('/delete/:id', async (req, res) => {
   const { id } = req.params
   whatsapp.deleteSession(id)
@@ -165,6 +168,7 @@ app.get('/delete/:id', async (req, res) => {
   })
 })
 
+// GET ALL SESSION
 app.get('/session', async (req, res) => {
   const sessions = await whatsapp.getAllSession()
   res.json({
